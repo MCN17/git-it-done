@@ -23,6 +23,8 @@ var getUserRepos = function(user) {
         if (response.ok) {                              // ok(property that's bundled in the response object from fetch()) means HTTP request status is in the 200s
         response.json().then(function(data) {
             displayRepos(data, user);
+            //repos = data
+            //searchTerm = user
             //console.log(data);
         });
     } else {
@@ -56,8 +58,8 @@ var formSubmitHandler = function(event) {
 }
 
 userFormEl.addEventListener("submit", formSubmitHandler);
-
-var displayRepos = function(repos, searchTerm) { //how does it know what searchTerm is?
+function displayRepos(repos, searchTerm){
+//var displayRepos = function(repos, searchTerm) { //how does it know what searchTerm is?
 
     // check if api returned any repos
     if (repos.length === 0) {
@@ -72,8 +74,10 @@ var displayRepos = function(repos, searchTerm) { //how does it know what searchT
     for (var i = 0; i < repos.length; i++) {
         
         // format repo name
-        var repoName = repos[i].owner.login + "/" + repos[i].name;  // how does it know what owner.login is?
-
+        var repoName = repos[i].owner.login + "/" + repos[i].name;  // how does it know what repos and  owner.login is?
+console.log(repos[i])
+console.log(repos[i].owner)
+console.log(repos[i].owner.login)
         // create a container for each repo
         var repoEl = document.createElement("div");
         repoEl.classList = "list-item flex-row justify-space-between align-center";
