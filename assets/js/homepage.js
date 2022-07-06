@@ -25,7 +25,7 @@ var getUserRepos = function(user) {
             displayRepos(data, user);
             //repos = data
             //searchTerm = user
-            //console.log(data);
+            console.log(data);
         });
     } else {
         alert("Error: Github User Not Found");
@@ -75,12 +75,13 @@ function displayRepos(repos, searchTerm){
         
         // format repo name
         var repoName = repos[i].owner.login + "/" + repos[i].name;  // how does it know what repos and  owner.login is?
-console.log(repos[i])
-console.log(repos[i].owner)
-console.log(repos[i].owner.login)
+//console.log(repos[i])
+//console.log(repos[i].owner)
+//console.log(repos[i].owner.login)
         // create a container for each repo
-        var repoEl = document.createElement("div");
+        var repoEl = document.createElement("a");
         repoEl.classList = "list-item flex-row justify-space-between align-center";
+        repoEl.setAttribute("href", "./single-repo.html?repo=" + repoName); // when you create links to HTML pages in JS, make sure the paths are relative to the HTML pages, not the JS file.
 
         // create a span element to hold repository name 
         var titleEl = document.createElement("span");
@@ -107,7 +108,7 @@ console.log(repos[i].owner.login)
         repoContainerEl.appendChild(repoEl);
     }
 
-    console.log(repos);
+    //console.log(repos);
     // console.log(searchTerm);
 };
 
